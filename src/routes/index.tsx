@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -6,8 +6,8 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   return (
-    <div className="p-2">
-      <h3>Welcome Home!!!</h3>
+    <div>
+      <Link className='text-blue-400 hover:text-blue-600 hover:uppercase bg-white p-4 rounded' to='/rock-paper-scissors'>Rock/Paper/Scissors</Link>
     </div>
   )
 }
