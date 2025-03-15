@@ -23,33 +23,40 @@ function RouteComponent() {
   }
 
   function getResult() {
-    const winJsx = (
-      <div className='flex flex-col items-center justify-center gap-4'>
-        <Trophy className='size-24' />
-        <p>You Win!</p>
-      </div>
-    )
+    let message = <></>
+    
     if (userChoice === aiChoice) {
-      return (
-        <div className='flex flex-col items-center justify-center gap-4'>
+      message = (
+        <>
           <Handshake className='size-24' />
           <p>Draw</p>
-        </div>
+        </>
       )
-    } else if (userChoice === 'rock' && aiChoice === 'paper') {
-      return winJsx
-    } else if (userChoice === 'paper' && aiChoice === 'scissors') {
-      return winJsx
-    } else if (userChoice === 'scissors' && aiChoice === 'paper') {
-      return winJsx
+    } else if (
+      (userChoice === 'rock' && aiChoice === 'paper') ||
+      (userChoice === 'paper' && aiChoice === 'scissors') ||
+      (userChoice === 'scissors' && aiChoice === 'paper')
+    ) {
+      message = (
+        <>
+          <Trophy className='size-24' />
+          <p>You Win!</p>
+        </>
+      )
     } else {
-      return (
-        <div className='flex flex-col items-center justify-center gap-4'>
+      message = (
+        <>
           <Skull className='size-24' />
           <p>You lose :(</p>
-        </div>
+        </>
       )
     }
+
+    return (
+      <div className='flex flex-col items-center justify-center gap-4'>
+      {message}
+      </div>
+    )
   }
 
   function restartGame() {
@@ -89,7 +96,7 @@ function RouteComponent() {
           <p>You chose: {userChoice}</p>
           <p>AI chose: {aiChoice}</p>
           <p>{getResult()}</p>
-          <button onClick={restartGame}>START OVER</button>
+          <button onClick={restartGame} className='flex flex-col items-center justify-center gap-4 p-8 border border-gray-500 rounded bg-gray-900 w-40 h-20'>START OVER</button>
         </div>
       }
     </div>
