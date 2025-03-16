@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Scissors, HandMetal, Newspaper, Trophy, Handshake, Skull, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
+import '../styles/practice-projects.css'
 
 export const Route = createFileRoute('/rock-paper-scissors')({
   component: RouteComponent,
@@ -66,35 +67,35 @@ function RouteComponent() {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center gap-8 h-screen text-white'>
+    <div className='practice-projects-centered-container'>
       { gameState === 'playing' ?
         <>
-          <h1>Pick your weapon</h1>
+          <h1 className='rps-title'>Pick your weapon</h1>
           <div className='flex items-center justify-center gap-8'>
             <button onClick={ () => {
               handleUserChoice('rock')
-            }} className='flex flex-col items-center justify-center gap-4 p-8 border border-gray-500 rounded bg-gray-900 w-52 h-80'>
-              <HandMetal className='size-24' />
+            }} className='rps-card'>
+              <HandMetal className='rps-icon' />
               ROCK
             </button>
             <button onClick={ () => {
               handleUserChoice('paper')
-            }} className='flex flex-col items-center justify-center gap-4 p-8 border border-gray-500 rounded bg-gray-900 w-52 h-80'>
-              <Newspaper className='size-24' />
+            }} className='rps-card'>
+              <Newspaper className='rps-icon' />
               PAPER
             </button>
             <button onClick={ () => {
               handleUserChoice('scissors')
-            }} className='flex flex-col items-center justify-center gap-4 p-8 border border-gray-500 rounded bg-gray-900 w-52 h-80'>
-              <Scissors className='size-24' />
+            }} className='rps-card'>
+              <Scissors className='rps-icon' />
               SCISSORS
             </button>
           </div>
         </> :
-        <div className='flex flex-col items-center justify-center gap-8 h-screen'>
-          <p>You chose: {userChoice} | AI chose: {aiChoice}</p>
-          <p>{getResult()}</p>
-          <button onClick={restartGame} className='flex flex-col items-center justify-center gap-4 p-2 border border-gray-500 rounded bg-blue-500'>
+        <div className='practice-projects-centered-container'>
+          <p className='rps-title'>You chose: {userChoice} | AI chose: {aiChoice}</p>
+          <p className='rps-title'>{getResult()}</p>
+          <button onClick={restartGame} className='rps-button'>
             <RotateCcw className='size-8' />
             Play Again
           </button>
