@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Scissors, HandMetal, Newspaper, Trophy, Handshake, Skull } from 'lucide-react'
+import { Scissors, HandMetal, Newspaper, Trophy, Handshake, Skull, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/rock-paper-scissors')({
@@ -92,11 +92,12 @@ function RouteComponent() {
           </div>
         </> :
         <div className='flex flex-col items-center justify-center gap-8 h-screen'>
-          <h1>Game Over</h1>
-          <p>You chose: {userChoice}</p>
-          <p>AI chose: {aiChoice}</p>
+          <p>You chose: {userChoice} | AI chose: {aiChoice}</p>
           <p>{getResult()}</p>
-          <button onClick={restartGame} className='flex flex-col items-center justify-center gap-4 p-8 border border-gray-500 rounded bg-gray-900 w-40 h-20'>START OVER</button>
+          <button onClick={restartGame} className='flex flex-col items-center justify-center gap-4 p-2 border border-gray-500 rounded bg-blue-500'>
+            <RotateCcw className='size-8' />
+            Play Again
+          </button>
         </div>
       }
     </div>
